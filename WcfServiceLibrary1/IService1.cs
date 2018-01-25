@@ -12,13 +12,18 @@ namespace WcfServiceLibrary1
     public interface IService1
     {
         [OperationContract]
-        string GetData(int value);
+        List<Flights_cs>GetData();
+        
 
         [OperationContract]
-        CompositeType GetDataUsingDataContract(CompositeType composite);
+        Flights_cs FindFlightByID(int flightNumber);
+
+        [OperationContract]
+        string ChangeFlight(int flightNumber,string type,string locationFrom, string locationTo, DateTime departureTime, DateTime arrivalTime);
 
         // TODO: Add your service operations here
     }
+   
 
     // Use a data contract as illustrated in the sample below to add composite types to service operations.
     // You can add XSD files into the project. After building the project, you can directly use the data types defined there, with the namespace "WcfServiceLibrary1.ContractType".
@@ -41,5 +46,6 @@ namespace WcfServiceLibrary1
             get { return stringValue; }
             set { stringValue = value; }
         }
+        
     }
 }
